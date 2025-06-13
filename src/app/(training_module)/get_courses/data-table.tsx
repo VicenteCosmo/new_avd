@@ -144,6 +144,139 @@ export function DataTable<TData, TValue>({
       router.refresh()
     }
   }
+
+  //Handle Report
+
+// Interface para tipagem dos cursos
+interface Course {
+  id: number;
+  course_name: string;
+  status: string;
+  course_description: string;
+  course_init_date: string;
+  course_finish_date: string;
+  course_instructors: string;
+  course_requirements: string;
+}
+
+// Função robusta para formatação de datas
+function formatDate(dateString: string): string {
+  if (!dateString) return 'N/A';
+  
+  const date = new Date(dateString);
+  
+  // Validação mais robusta da data
+  if (isNaN(date.getTime())) {
+    console.error('Data inválida:', dateString);
+    return 'Data inválida';
+  }
+
+  const day = String(date.getDate()).padStart(2, '0');
+  const month = String(date.getMonth() + 1).padStart(2, '0');
+  const year = date.getFullYear();
+
+  return `${day}/${month}/${year}`;
+}
+
+// Função para obter dados dos cursos
+async function getCoursesData(): Promise<Course[]> {
+  try {
+    const response = await fetch('http://localhost:4000/trainings/get_courses');
+    
+    if (!response.ok) {
+      throw new Error(`Erro HTTP: ${response.status}`);
+    }
+
+    const data = await response.json();
+    const message = data.message || [];
+    
+    // Garante que sempre trabalhamos com um array
+    const coursesArray = Array.isArray(message) ? message : [message];
+    
+    return coursesArray.map((course: any) => ({
+      id: course.id || 0,
+      course_name: course.courses || 'Sem nome',
+      status: course.status || 'pending',
+      course_description: course.description || 'Sem descrição',
+      course_init_date: formatDate(course.init_date),
+      course_finish_date: formatDate(course.finish_date),
+      course_instructors: course.instructors || 'N/A',
+      course_requirements: course.requirements || 'N/A'
+    }));
+  } catch (error) {
+    console.error("Erro ao buscar cursos:", error);
+    throw error; // Propaga o erro para ser tratado pelo chamador
+  } 
+}
+
+// Função principal para gerar o relatório
+const generateReport = async () => {
+  try {
+    // 1. Obter os dados
+    const courses = await getCoursesData();
+    console.log('Dados obtidos:', courses);
+
+    // 2. Preparar a estrutura para o relatório
+    const reportData = {
+      title: "Relatório de Cursos",
+      headers: ["Curso", "Status", "Início", "Término", "Instrutores", "Requisitos"],
+      data: courses.map(course => [
+        course.course_name,
+        course.status,
+        course.course_init_date,
+        course.course_finish_date,
+        course.course_instructors,
+        course.course_requirements
+      ])
+    };
+
+    console.log('Enviando para o backend:', reportData);
+
+    // 3. Enviar para o backend gerar o PDF
+    const response = await fetch('http://localhost:4000/trainings/generate_report', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(reportData)
+    });
+
+    // 4. Verificar se a resposta foi bem-sucedida
+    if (!response.ok) {
+      throw new Error(`Erro ao gerar relatório: ${response.statusText}`);
+    }
+
+    // 5. Processar o PDF retornado
+    const blob = await response.blob();
+    
+    // Verificar se o conteúdo é realmente um PDF
+    if (!blob.type.includes('application/pdf')) {
+      throw new Error('O servidor não retornou um PDF válido');
+    }
+
+    // 6. Criar o download do PDF
+    const url = window.URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `relatorio_cursos_${new Date().toISOString().slice(0,10)}.pdf`;
+    document.body.appendChild(a);
+    a.click();
+
+    // 7. Limpeza
+    setTimeout(() => {
+      document.body.removeChild(a);
+      window.URL.revokeObjectURL(url);
+    }, 100);
+
+  } catch (error) {
+    console.error('Falha ao gerar relatório:', error);
+    alert('Erro ao gerar relatório. Verifique o console para detalhes.');
+  }
+};
+
+// Exemplo de uso:
+// Chamar generateReport() quando necessário (em um click de botão, por exemplo)
+
   
 
   const table = useReactTable({
@@ -172,7 +305,8 @@ export function DataTable<TData, TValue>({
           className="max-w-sm"
         />
 
-        <Dialog open={isDialogOpen} >
+        <div>
+                  <Dialog open={isDialogOpen} >
       <DialogTrigger asChild>
        <button
             // onClick={() => setShowCreateForm(true)}
@@ -289,6 +423,18 @@ export function DataTable<TData, TValue>({
 
       
     </Dialog>
+
+           <button
+            // onClick={() => setShowCreateForm(true)}
+            // disabled={!selectedTable}
+            onClick={() => generateReport() }
+            className="px-4 mr-5 py-2 bg-green-600 text-white rounded hover:bg-green-700 disabled:bg-gray-400"
+          >
+            Gerar relatório
+          </button>
+        </div>
+
+
 
       </div>
 

@@ -7,10 +7,10 @@ import "slick-carousel/slick/slick-theme.css";
 import { Card, CardHeader, CardBody, CardFooter, Typography, Button } from '@material-tailwind/react'
 
 const ModuleCard = ({ 
-  title = "Gestão de Dados", 
-  description = "Lorem ipsum dolor sit amet consectetur adipisicing elit. Non vel nesciunt aperiam, harum aut ab porro voluptatum hic obcaecati quo quia iste distinctio enim voluptatibus atque minima repellendus odit modi!",
-  imageSrc = "/peer-to-peer1.png"
-}) => (
+  title, 
+  description,
+  imageSrc
+} : {title: any, description: any, imageSrc: any}) => (
   <Card className="mt-10 w-96 h-120 shadow-2xl rounded-2xl"
     placeholder={undefined} 
     onPointerEnterCapture={undefined} 
@@ -135,9 +135,27 @@ function Section2() {
       {/* Module Cards Section */}
       <div className="container mx-auto px-4 py-10 mt-16 bg-transparent ">
         <div className="flex flex-wrap justify-center gap-8">
-          <ModuleCard />
-          <ModuleCard />
-          <ModuleCard />
+          <ModuleCard
+          title="Gestão de Dados"
+          description="Lorem ipsum dolor sit amet consectetur 
+          adipisicing elit. Non vel nesciunt aperiam, harum aut ab porro voluptatum hic obcaecati 
+          quo quia iste distinctio enim voluptatibus atque minima repellendus odit modi!"
+          imageSrc="/peer-to-peer1.png"
+          />
+          <ModuleCard
+          title="Gestão de Formações"
+          description="Lorem ipsum dolor sit amet consectetur 
+          adipisicing elit. Non vel nesciunt aperiam, harum aut ab porro voluptatum hic obcaecati 
+          quo quia iste distinctio enim voluptatibus atque minima repellendus odit modi!"
+          imageSrc="/peer-to-peer1.png"
+          />
+          <ModuleCard
+          title="Gestão de Tempo"
+          description="Lorem ipsum dolor sit amet consectetur 
+          adipisicing elit. Non vel nesciunt aperiam, harum aut ab porro voluptatum hic obcaecati 
+          quo quia iste distinctio enim voluptatibus atque minima repellendus odit modi!"
+          imageSrc="/peer-to-peer1.png"
+          />
         </div>
       </div>
 

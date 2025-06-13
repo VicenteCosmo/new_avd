@@ -53,7 +53,7 @@ async function getData(): Promise<Courses[]> {
   } catch (error) {
     console.error("Error fetching courses:", error);
     return [];
-  }
+  } 
 }
  
 import React, { useEffect, useState } from "react";

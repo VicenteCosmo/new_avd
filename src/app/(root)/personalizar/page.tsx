@@ -179,6 +179,9 @@ fields.forEach(item => {
       <div className="max-w-3xl mx-auto">
         <div className="text-center mb-8">
           <h1 className="text-3xl font-extrabold text-gray-900">Personalize sua Empresa</h1>
+          <button
+          onClick={() => router.push('/admin')}
+          type='button' className='bg-green-500 position-absolute right-0 top-0 text-white p-2 rounded-md' >Ir para o painel</button>
           <p className="mt-2 text-sm text-gray-600">
             Defina a estrutura da sua Empresa. O campo ID é obrigatório e configurado automaticamente.
           </p>
