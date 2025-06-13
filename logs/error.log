@@ -1,0 +1,34 @@
+2025-06-03T12:20:27.335Z - error: Error when processing render request 1
+(because) timed out after 30000 ms while waiting for the WS endpoint URL to appear in stdout!
+TimeoutError: Timed out after 30000 ms while waiting for the WS endpoint URL to appear in stdout!
+  at ChromeLauncher.launch (C:\Cosmo\Projects\AVD\AVD-SERVER\node_modules\puppeteer-core\lib\cjs\puppeteer\node\BrowserLauncher.js:162:23)
+  at async createBrowser (C:\Cosmo\Projects\AVD\AVD-SERVER\node_modules\@jsreport\jsreport-chrome-pdf\lib\chromePoolStrategy.js:115:26)
+  at async allocateBrowser (C:\Cosmo\Projects\AVD\AVD-SERVER\node_modules\@jsreport\jsreport-chrome-pdf\lib\chromePoolStrategy.js:130:5)
+  at async getBrowser (C:\Cosmo\Projects\AVD\AVD-SERVER\node_modules\@jsreport\jsreport-chrome-pdf\lib\chromePoolStrategy.js:33:30)
+  at async module.exports (C:\Cosmo\Projects\AVD\AVD-SERVER\node_modules\@jsreport\jsreport-chrome-pdf\lib\conversion.js:11:19)
+  at async execute (C:\Cosmo\Projects\AVD\AVD-SERVER\node_modules\@jsreport\jsreport-chrome-pdf\lib\chromePoolStrategy.js:30:22)
+  at async C:\Cosmo\Projects\AVD\AVD-SERVER\node_modules\@jsreport\jsreport-chrome-pdf\lib\lazyRecipe.js:58:20
+  at async invokeRender (C:\Cosmo\Projects\AVD\AVD-SERVER\node_modules\@jsreport\jsreport-core\lib\worker\render\render.js:93:5)
+  at async WorkerReporter._render (C:\Cosmo\Projects\AVD\AVD-SERVER\node_modules\@jsreport\jsreport-core\lib\worker\render\render.js:148:7)
+  at async C:\Cosmo\Projects\AVD\AVD-SERVER\node_modules\@jsreport\jsreport-core\lib\worker\reporter.js:233:24
+  at async processAndResponse (C:\Cosmo\Projects\AVD\AVD-SERVER\node_modules\@jsreport\advanced-workers\lib\workerHandler.js:42:17) rootId=255r85g76dbpaf8, id=255r85g76dbpaf8
+2025-06-03T12:20:27.335Z - error: Rendering request 1 finished with error in 52055 ms rootId=255r85g76dbpaf8, id=255r85g76dbpaf8
+2025-06-03T12:22:01.171Z - error: Error when processing render request 2
+(because) timed out after 30000 ms while waiting for the WS endpoint URL to appear in stdout!
+TimeoutError: Timed out after 30000 ms while waiting for the WS endpoint URL to appear in stdout!
+  at ChromeLauncher.launch (C:\Cosmo\Projects\AVD\AVD-SERVER\node_modules\puppeteer-core\lib\cjs\puppeteer\node\BrowserLauncher.js:162:23)
+  at async createBrowser (C:\Cosmo\Projects\AVD\AVD-SERVER\node_modules\@jsreport\jsreport-chrome-pdf\lib\chromePoolStrategy.js:115:26)
+  at async allocateBrowser (C:\Cosmo\Projects\AVD\AVD-SERVER\node_modules\@jsreport\jsreport-chrome-pdf\lib\chromePoolStrategy.js:130:5)
+  at async getBrowser (C:\Cosmo\Projects\AVD\AVD-SERVER\node_modules\@jsreport\jsreport-chrome-pdf\lib\chromePoolStrategy.js:33:30)
+  at async module.exports (C:\Cosmo\Projects\AVD\AVD-SERVER\node_modules\@jsreport\jsreport-chrome-pdf\lib\conversion.js:11:19)
+  at async execute (C:\Cosmo\Projects\AVD\AVD-SERVER\node_modules\@jsreport\jsreport-chrome-pdf\lib\chromePoolStrategy.js:30:22)
+  at async C:\Cosmo\Projects\AVD\AVD-SERVER\node_modules\@jsreport\jsreport-chrome-pdf\lib\lazyRecipe.js:58:20
+  at async invokeRender (C:\Cosmo\Projects\AVD\AVD-SERVER\node_modules\@jsreport\jsreport-core\lib\worker\render\render.js:93:5)
+  at async WorkerReporter._render (C:\Cosmo\Projects\AVD\AVD-SERVER\node_modules\@jsreport\jsreport-core\lib\worker\render\render.js:148:7)
+  at async C:\Cosmo\Projects\AVD\AVD-SERVER\node_modules\@jsreport\jsreport-core\lib\worker\reporter.js:233:24
+  at async processAndResponse (C:\Cosmo\Projects\AVD\AVD-SERVER\node_modules\@jsreport\advanced-workers\lib\workerHandler.js:42:17) rootId=huzu8rizflrpdvt, id=huzu8rizflrpdvt
+2025-06-03T12:22:01.172Z - error: Rendering request 2 finished with error in 31607 ms rootId=huzu8rizflrpdvt, id=huzu8rizflrpdvt
+2025-06-04T14:10:10.953Z - error: Error occurred during reporter init: Error: Timeout occurred when waiting for the worker action "init"
+    at Timeout.<anonymous> (C:\Cosmo\Projects\AVD\AVD-SERVER\node_modules\@jsreport\advanced-workers\lib\threadWorker.js:43:23)
+    at listOnTimeout (node:internal/timers:594:17)
+    at process.processTimers (node:internal/timers:529:7)
