@@ -4,14 +4,19 @@ WORKDIR /app
 ENV PYTHONUNBUFFERED 1
 ENV PYTHONDONTWRITEBYTECODE 1
 
-# install system dependencies
-RUN apt-get update
+# Instala dependências do sistema (CRITICO para mysqlclient)
+RUN apt-get update && \
+    apt-get install -y --no-install-recommends \
+    build-essential \
+    default-libmysqlclient-dev \
+    pkg-config && \
+    rm -rf /var/lib/apt/lists/*
 
-# install dependencies
+# Instala dependências do Python
 RUN pip install --upgrade pip
 COPY ./requirements.txt /app/
-RUN pip install -r requirements.txt
+RUN pip install --no-cache-dir -r requirements.txt
 
 COPY . /app
 
-ENTRYPOINT [ "gunicorn", "core.wsgi", "-b", "0.0.0.0:8000"]
+ENTRYPOINT ["gunicorn", "core.wsgi", "-b", "0.0.0.0:8000"]
