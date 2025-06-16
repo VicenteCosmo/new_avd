@@ -106,7 +106,7 @@ class PasswordResetRequestView(APIView):
                 return Response({"message": "Se o e-mail existir, um link de recuperação será enviado"}, status=200)
 
             # Gerar token e definir expiração (24 horas)
-            token = secrets.token_urlsafe(32)
+            token = get_random_string(length=6, allowed_chars='0123456789')
             user.reset_token = token
             user.reset_token_expiration = timezone.now() + timedelta(hours=24)
             user.save()
