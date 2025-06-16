@@ -44,7 +44,7 @@ class LoginEmpresaView(APIView):
             return Response({"message": "Senha inválida!"})
         
         # Gerar token e definir expiração (24 horas)
-        token1 = secrets.token_urlsafe(32)
+        token1 = get_random_string(length=6, allowed_chars='0123456789')
         user.reset_token = token1
         user.reset_token_expiration = timezone.now() + timedelta(hours=24)
         user.save()
