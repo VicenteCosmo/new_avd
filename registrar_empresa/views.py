@@ -10,6 +10,7 @@ from django.conf import settings
 import secrets
 from datetime import timedelta
 from django.utils import timezone
+from django.utils.crypto import get_random_string
 
 class RegistrarEmpresaView(APIView):
     def post(self, request):
