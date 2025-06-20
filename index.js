@@ -174,4 +174,7 @@ app.post('/trainings/generate_report', (req, res) => {
     }
 })
 
-app.listen(4000)
+app.listen(4000, (e) => {
+    if(e) console.log('Erros ao escutar a porta:', e)
+    else console.log('App rodando na porta 4000...')
+})
