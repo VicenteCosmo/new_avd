@@ -105,7 +105,7 @@ app.put('/trainings/update_course/:id', (req, res) => {
 })
 
 app.get('/trainings/get_courses', (req, res) => {
-    const query = `SELECT * FROM ${credentials.DB}.avd_training`
+    const query = 'SELECT * FROM bxijugqazbdworecszbc.avd_training'
 
     DB.query(query, (e, result) => {
         if(e){
