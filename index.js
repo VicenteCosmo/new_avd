@@ -15,10 +15,10 @@ app.use((req, res, next) => {
 
 app.post('/enroll_trainee', (req, res) => {
     const {nome, curso } = req.body
-    const query = 'INSERT INTO bxijugqazbdworecszbc.inscrever_formando  (nome, curso) VALUES (?, ?)'
+    const query = 'INSERT INTO bxijugqazbdworecszbc.inscrever_formando (nome, curso) VALUES (?, ?)'
 
     
-    const query2 = 'SELECT * FROM avd.inscrever_formando'
+    const query2 = 'SELECT * FROM bxijugqazbdworecszbc.inscrever_formando'
 
     db.query(query2, (e, result) => {
         if(e){
