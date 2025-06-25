@@ -10,7 +10,7 @@ const connection = mysql2.createConnection({
 
 connection.connect((e) => {
     if(e) console.log('Erros ao conectar ao banco de dados:', e)
-    else console.log('Conectado com sucesso ao banco de dados')    
+    else console.log('Conectado com sucesso ao banco de dado')    
 })
 
 export default connection
