@@ -246,7 +246,7 @@ const generateReport = async () => {
     console.log('Enviando para o backend:', reportData);
 
     // 3. Enviar para o backend gerar o PDF
-    const response = await fetch('https://new-avd.onrender.com/trainings/generate_report', {
+    const response = await fetch('https://app-e5d29f72-5de3-4ffe-af68-81bd6fa126ea.cleverapps.io/trainings/generate_report', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -290,7 +290,7 @@ const generateReport = async () => {
 //Enroll worker
 
 async function postEnrollData(){
-  const response = await fetch('http://localhost:4000/enroll_trainee', {
+  const response = await fetch('https://new-avd.onrender.com/enroll_trainee', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -347,12 +347,12 @@ const enrollWorker = async (e: React.FormEvent) => {
     APIs.getWorkerSignedIn().then((data) => {
       data.map((workerName: any) => {
         console.log(workerName.nome)
-        if(workerName.nome === traineeData.nome){
+        if(workerName.nome){
           APIs.getData().then((datasGot) => {
             datasGot.map((data) => {
               console.log('Datas got:', data.course_name)
 
-              if(data.course_name === traineeData.curso){
+              if(data.course_name){
                 postEnrollData()
               }
               else{

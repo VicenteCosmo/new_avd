@@ -54,30 +54,12 @@ export default function EmployeeCoursesPage() {
 
   async function GetTrainee() {
     try {
-      await fetch(`http://localhost:4000/trainees/${userName}`).then(res => res.json())
+      await fetch(`https://new-avd.onrender.com/trainees/${userName}`).then(res => res.json())
       .then(json => {
         setTrainees(json.message || [])
         console.log('Trainees:',trainees)
         // console.log(courses)
       })
-
-      // // console.log(response)
-      // if(response.status === 200){
-      //   response.json().then((data) => {
-      //     setTrainees(data.message)
-      //     console.log('Trainees:', trainees)
-      //     // data.message.map((x: any) => {
-      //     //   // console.log(x.curso)
-      //     //   // setTrainees(x)
-      //     //   // console.log('Trainees:', trainees)
-
-      //     // })
-      //     // setTrainees(data.message || [])
-      //   })
-      // }
-      // if(response.status === 500){
-      //   console.log('Erros ao obter trainee')
-      // }
 
     } catch (error) {
       console.error('Erro ao obter trainee:', error)
@@ -124,7 +106,7 @@ export default function EmployeeCoursesPage() {
         onChange={e => setFilter(e.target.value)}
         className="mb-4 max-w-sm"
       />
-      <button onClick={()=> setmostrar(true)}>Adiconar Hdade</button>
+      {/* <button onClick={()=> setmostrar(true)}>Adiconar Hdade</button> */}
       <Table>
         <TableHeader>
           <TableRow>
