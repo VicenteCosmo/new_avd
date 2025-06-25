@@ -1,15 +1,24 @@
-import mysql2 from 'mysql2'
+import mysql2 from 'mysql2/promise'; // Note o /promise aqui
 
-const connection = mysql2.createConnection({
+// Crie um pool de conexões
+const pool = mysql2.createPool({
     host: 'bxijugqazbdworecszbc-mysql.services.clever-cloud.com',
     user: 'uqdrqiqffb5gyzua',
     password: '42qWxyh3NXtAt4syT7k2',
-    database: 'bxijugqazbdworecszbc'
-})
+    database: 'bxijugqazbdworecszbc',
+    waitForConnections: true,
+    connectionLimit: 10, // Número máximo de conexões no pool
+    queueLimit: 0
+});
 
-connection.connect((e) => {
-    if(e) console.log('Erros ao conectar ao banco de dados:', e)
-    else console.log('Conectado com sucesso ao banco de dados')    
-})
+// Testar a conexão do pool
+pool.getConnection()
+    .then(conn => {
+        console.log('Conectado ao banco de dados com sucesso');
+        conn.release(); // Libera a conexão de volta para o pool
+    })
+    .catch(err => {
+        console.error('Erro ao conectar ao banco de dados:', err);
+    });
 
-export default connection
+export default pool;
