@@ -15,7 +15,7 @@ app.use((req, res, next) => {
 
 app.post('/enroll_trainee', (req, res) => {
     const {nome, curso } = req.body
-    const query = 'INSERT INTO avd.inscrever_formando  (nome, curso) VALUES (?, ?)'
+    const query = 'INSERT INTO bxijugqazbdworecszbc.inscrever_formando  (nome, curso) VALUES (?, ?)'
 
     
     const query2 = 'SELECT * FROM avd.inscrever_formando'
@@ -58,7 +58,7 @@ app.post('/enroll_trainee', (req, res) => {
 app.put('/update_trainee/:id', (req, res) => {
     const id = req.params.id
     const {nome, curso} = req.body
-    const query = 'UPDATE avd.inscrever_formando SET nome = ?, curso = ? WHERE id = ?'
+    const query = 'UPDATE bxijugqazbdworecszbc.inscrever_formando SET nome = ?, curso = ? WHERE id = ?'
 
     db.query(query, [nome, curso, id], (e, result) => {
         if(e){
@@ -74,7 +74,7 @@ app.put('/update_trainee/:id', (req, res) => {
 
 app.delete('/delete_trainee/:id', (req, res) => {
     const id = req.params.id
-    const query = 'DELETE FROM avd.inscrever_formando WHERE id = ?'
+    const query = 'DELETE FROM bxijugqazbdworecszbc.inscrever_formando WHERE id = ?'
 
     db.query(query, [id], (e, result) => {
         if(e){
@@ -90,7 +90,7 @@ app.delete('/delete_trainee/:id', (req, res) => {
 
 app.get('/trainees/:name', (req, res) => {
     const nome = req.params.name
-    const query = 'SELECT * FROM avd.inscrever_formando WHERE nome = ?'
+    const query = 'SELECT * FROM bxijugqazbdworecszbc.inscrever_formando WHERE nome = ?'
 
     db.query(query, [nome],(e, result) => {
         if(e){
