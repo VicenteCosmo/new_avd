@@ -49,6 +49,18 @@ app.post('/enroll_trainee', (req, res) => {
                 }
 
             }
+            else{
+                db.query(query, [nome, curso], (e, result1) => {
+                        if(e){
+                            console.error('Error inserting trainee:', e)
+                            res.status(500).json({message: `Error inserting trainee: ${e}`})
+                        }
+                        else{
+                            console.log('Trainee inserted sucessfully:', result1)
+                            res.status(200).json({message: `Trainee inserted successfully`})
+                        }
+                    })
+            }
 
         }
     })
@@ -104,7 +116,7 @@ app.get('/trainees/:name', (req, res) => {
     })
 })
 
-app.listen(4000, (e) => {
+app.listen(4001, (e) => {
     if(e) console.error('Error starting server:', e)
-    else console.log('Server ruuning on port 4000')
+    else console.log('Server ruuning on port 4001')
 })
