@@ -116,7 +116,7 @@ app.get('/trainees/:name', (req, res) => {
     })
 })
 
-app.listen(4001, (e) => {
+app.listen(4000, (e) => {
     if(e) console.error('Error starting server:', e)
     else console.log('Server ruuning on port 4001')
 })
