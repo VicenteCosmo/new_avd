@@ -1,4 +1,4 @@
-import mysql2 from 'mysql2'
+import mysql2 from 'mysql'
 
 const connection = mysql2.createConnection({
     host: 'bxijugqazbdworecszbc-mysql.services.clever-cloud.com',
