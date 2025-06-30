@@ -38,7 +38,7 @@ class APis {
 
     public async getData(): Promise<Courses[]> {
         try {
-            const response = await fetch('https://app-e5d29f72-5de3-4ffe-af68-81bd6fa126ea.cleverapps.io/trainings/get_courses');
+            const response = await fetch('https://avd-trainings.onrender.com/trainings/get_courses');
             const data = await response.json();
             const message = data.message;
             

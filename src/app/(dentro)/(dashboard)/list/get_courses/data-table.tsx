@@ -90,7 +90,7 @@ export function DataTable<TData, TValue>({
     setIsSubmitting(true)
 
     try {
-      const response = await fetch('https://app-e5d29f72-5de3-4ffe-af68-81bd6fa126ea.cleverapps.io/trainings/insert_course', {
+      const response = await fetch('https://avd-trainings.onrender.com/trainings/insert_course', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -194,7 +194,7 @@ function formatDate(dateString: string): string {
 // Função para obter dados dos cursos
 async function getCoursesData(): Promise<Course[]> {
   try {
-    const response = await fetch('https://app-e5d29f72-5de3-4ffe-af68-81bd6fa126ea.cleverapps.io/trainings/get_courses');
+    const response = await fetch('https://avd-trainings.onrender.com/trainings/get_courses');
     
     if (!response.ok) {
       throw new Error(`Erro HTTP: ${response.status}`);
@@ -246,7 +246,7 @@ const generateReport = async () => {
     console.log('Enviando para o backend:', reportData);
 
     // 3. Enviar para o backend gerar o PDF
-    const response = await fetch('https://app-e5d29f72-5de3-4ffe-af68-81bd6fa126ea.cleverapps.io/trainings/generate_report', {
+    const response = await fetch('https://avd-trainings.onrender.com/trainings/generate_report', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'

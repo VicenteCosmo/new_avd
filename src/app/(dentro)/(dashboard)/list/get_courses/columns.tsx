@@ -25,7 +25,7 @@ export type Courses = {
 }
 
 async function deleteCourse(id: number) {
-  const url = `https://app-e5d29f72-5de3-4ffe-af68-81bd6fa126ea.cleverapps.io/trainings/delete_courses/${id}`
+  const url = `https://avd-trainings.onrender.com/trainings/delete_courses/${id}`
   await fetch(url, {
     method: 'DELETE'
   }).then(() => {
@@ -35,7 +35,7 @@ async function deleteCourse(id: number) {
 }
 
 async function editCourse(id: number, updatedData: Partial<Courses>) {
-  const url = `https://app-e5d29f72-5de3-4ffe-af68-81bd6fa126ea.cleverapps.io/trainings/update_course/${id}`
+  const url = `https://avd-trainings.onrender.com/trainings/update_course/${id}`
   await fetch(url, {
     method: 'PUT',
     headers: {
