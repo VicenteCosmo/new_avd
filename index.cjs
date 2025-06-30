@@ -7,7 +7,7 @@ const generateReport = require('./Report.cjs')
 
 const app = express()
 
-//settings
+//setti
 app.use(express.json())
 
 app.use((req, res, next) => {
@@ -104,7 +104,7 @@ app.put('/trainings/update_course/:id', (req, res) => {
     })
 })
 
-app.get('/trainings/get_courses', (re   q, res) => {
+app.get('/trainings/get_courses', (req, res) => {
     const query = 'SELECT * FROM bxijugqazbdworecszbc.avd_training'
 
     DB.query(query, (e, result) => {
