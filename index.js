@@ -116,6 +116,22 @@ app.get('/trainees/:name', (req, res) => {
     })
 })
 
+app.get('/trainees', (req, res) => {
+    const nome = req.params.name
+    const query = 'SELECT * FROM bxijugqazbdworecszbc.inscrever_formando'
+
+    db.query(query,(e, result) => {
+        if(e){
+            console.error('Error getting trainees:', e)
+            res.status(500).json({message: `Error inserting trainee: ${e}`})
+        }
+        else{
+            console.log('Trainee got sucessfully:', result)
+            res.status(200).json({message: result})
+        }
+    })
+})
+
 app.listen(4000, (e) => {
     if(e) console.error('Error starting server:', e)
     else console.log('Server ruuning on port 4001')
