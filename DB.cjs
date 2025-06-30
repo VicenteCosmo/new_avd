@@ -1,4 +1,4 @@
-import mysql2 from 'mysql'
+const mysql2 = require('mysql')
 
 const connection = mysql2.createConnection({
     host: 'bxijugqazbdworecszbc-mysql.services.clever-cloud.com',
@@ -12,4 +12,4 @@ connection.connect((e) => {
     else console.log('Conectado com sucesso ao banco de dados')    
 })
 
-export default connection
+module.exports = connection

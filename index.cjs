@@ -1,9 +1,9 @@
-import express from 'express'
-import credentials from './env.js'
-import DB from './DB.js'
+const express = require('express')
+const credentials = ('./env.js')
+const DB = require('./DB.cjs')
 
 // import jsreport from './Report.js'
-import generateReport from './Report.js'
+const generateReport = require('./Report.cjs')
 
 const app = express()
 
@@ -174,4 +174,4 @@ app.post('/trainings/generate_report', (req, res) => {
     }
 })
 
-app.listen(8080)
+app.listen(4002)
