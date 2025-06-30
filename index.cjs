@@ -24,7 +24,7 @@ app.post('/trainings/insert_course', (req, res) => {
         course_requirements
     } = req.body
 
-    const query = `INSERT INTO ${credentials.DB}.avd_training (courses, description, init_date, finish_date, instructors, requirements ) VALUES (?, ?, ?, ?, ?, ?)`
+    const query = 'INSERT INTO bxijugqazbdworecszbc.avd_training (courses, description, init_date, finish_date, instructors, requirements ) VALUES (?, ?, ?, ?, ?, ?)'
     const values = [course_name, course_description, course_init_date, course_finish_date, course_instuctors, course_requirements]
     
     DB.query('SELECT id FROM avd_training WHERE courses = ?', [course_name], (e, result1) => {
@@ -77,7 +77,7 @@ app.put('/trainings/update_course/:id', (req, res) => {
     const { course_name, course_description, course_init_date, course_finish_date, course_instructors, 
         course_requirements
     } = req.body
-    const query = `UPDATE ${credentials.DB}.avd_training SET courses=?, description=?, init_date=?, finish_date=?, instructors=?, requirements=? WHERE id=?`
+    const query = 'UPDATE bxijugqazbdworecszbc.avd_training SET courses=?, description=?, init_date=?, finish_date=?, instructors=?, requirements=? WHERE id=?'
     const values = [course_name, course_description, course_init_date, course_finish_date, course_instructors, course_requirements, id]
 
     DB.query(query, values, (e, result) => {
@@ -104,7 +104,7 @@ app.put('/trainings/update_course/:id', (req, res) => {
     })
 })
 
-app.get('/trainings/get_courses', (req, res) => {
+app.get('/trainings/get_courses', (re   q, res) => {
     const query = 'SELECT * FROM bxijugqazbdworecszbc.avd_training'
 
     DB.query(query, (e, result) => {
@@ -130,7 +130,7 @@ app.get('/trainings/get_courses', (req, res) => {
 
 app.delete('/trainings/delete_courses/:id', (req, res) => {
     const id = req.params.id
-    const query = `DELETE FROM ${credentials.DB}.avd_training WHERE id = ?`
+    const query = 'DELETE FROM bxijugqazbdworecszbc.avd_training WHERE id = ?'
     const value = [id]
 
     DB.query(query,value, (e, result) => {
